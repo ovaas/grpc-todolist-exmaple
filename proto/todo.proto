@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package todo;
+
+service todoService {
+  rpc addTodo(addTodoParams) returns (todoObject) {}
+  rpc deleteTodo(deleteTodoParams) returns (deleteResponse) {}
+  rpc getTodos(getTodoParams) returns (todoResponse) {}
+}
+
+message getTodoParams{}
+
+message addTodoParams {
+  string task = 1;
+}
+
+message deleteTodoParams {
+  string id = 1;
+}
+
+message todoObject {
+  string id = 1;
+  string task = 2;
+}
+
+message todoResponse {
+  repeated todoObject todos = 1;
+}
+
+message deleteResponse {
+  string message = 1;
+}
