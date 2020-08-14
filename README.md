@@ -1,11 +1,13 @@
 # gRPC API TodoList Example
 
-## Build Docker Image
+## Build
+
+### Build Docker Image
 ```
 docker-compose build
 ```
 
-## Rebuild Specific Docker Image
+### Rebuild Specific Docker Image
 
 Service names:
 front-end: web
