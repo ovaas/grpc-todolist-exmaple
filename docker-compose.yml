@@ -1,0 +1,28 @@
+version: '3'
+
+services: 
+  web:
+    build: ./client
+    image: grpc-vue-client:v1
+    ports: 
+      - 3000:3000
+    restart: unless-stopped
+    networks:
+      - grpc-todolist
+  proxy:
+    build: ./envoy
+    image: grpc-envoy:v1
+    ports: 
+      - 8080:8080
+    restart: unless-stopped
+    networks: 
+      - grpc-todolist
+  server:
+    build: ./server
+    image: grpc-server:v1
+    restart: unless-stopped
+    networks:
+      - grpc-todolist
+networks:
+  grpc-todolist:
+    driver: bridge
