@@ -1,4 +1,4 @@
-const todoProtoPath = '../proto/todo.proto';
+const todoProtoPath = './todo.proto';
 
 const grpc = require('grpc');
 const protoLoader = require('@grpc/proto-loader');
