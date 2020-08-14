@@ -6,7 +6,7 @@
       <button class="btn ml-4" @click="addTodo(inputField)" @keyup.enter="addTodo(inputField)" :disabled="!inputField">Add Todo</button>
     </div>
     <ul class="flex flex-col mt-6 rounded-lg border divide-y divide-gray-400">
-      <li class="block p-4 border-grey flex items-stretch" v-for="todo in todos" :key="todo.id">
+      <li class="p-4 border-grey flex items-stretch" v-for="todo in todos" :key="todo.id">
         <p class="flex-1">{{todo.task}}</p>
         <div class="flex-none h-6 w-6 flex items-center justify-center hover:text-gray-600" @click="deleteTodo(todo)">
           <CloseIcon />
