@@ -16,13 +16,14 @@ const packageDefinition = protoLoader.loadSync(
 );
 const todoProto = grpc.loadPackageDefinition(packageDefinition).todo;
 
-const Todos = [];
+let Todos = [];
 
 const addTodo = (call, callback) => {
   const todoObject = {
     id: uuidv4(),
     task: call.request.task,
   };
+  console.log(call.request);
   Todos.push(todoObject);
   console.log(`Todo: ${todoObject.id} added!`);
   callback(null, todoObject);
@@ -30,21 +31,26 @@ const addTodo = (call, callback) => {
 
 const getTodos = (call, callback) => {
   console.log('Get tasks');
-  callback(null, { Todos });
+  console.log(Todos);
+  callback(null, { todos: Todos });
 };
 
 const deleteTodo = (call, callback) => {
-  Todos.filter((todo) => todo.id !== call.request.id);
+  Todos = Todos.filter((todo) => todo.id !== call.request.id);
   console.log(`Todo: ${call.request.id} deleted`);
   callback(null, { message: 'Success' });
 };
 
-const main = () => {
+const getServer = () => {
   const server = new grpc.Server();
   server.addService(todoProto.todoService.service,
     { addTodo, getTodos, deleteTodo });
-  server.bind('0.0.0.0:9090', grpc.ServerCredentials.createInsecure());
-  server.start();
+  return server;
 };
 
-main();
+if (require.main === module) {
+  const server = getServer();
+  server.bind('0.0.0.0:9090', grpc.ServerCredentials.createInsecure());
+  console.log('Server running at port: 9090');
+  server.start();
+}
