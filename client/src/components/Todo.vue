@@ -3,7 +3,7 @@
     <h1 class="text-2xl text-center font-bold">Todo List gRPC Client</h1>
     <div class="mt-10">
       <input type="text" v-model="inputField" class="appearance-none border rounded py-2 px-3 text-black mb-3 leading-tight outline-none bg-gray-400">
-      <button class="btn ml-4" @click="addTodo(inputField)" :disabled="!inputField">Add Todo</button>
+      <button class="btn ml-4" @click="addTodo(inputField)" @keyup.enter="addTodo(inputField)" :disabled="!inputField">Add Todo</button>
     </div>
     <ul class="flex flex-col mt-6 rounded-lg border divide-y divide-gray-400">
       <li class="block p-4 border-grey flex items-stretch" v-for="todo in todos" :key="todo.id">
