@@ -6,6 +6,7 @@ on:
       - master
     paths:
       - 'client/*'
+      - '.github/workflows/client-build.yml'
 
 jobs:
   build-and-deploy:

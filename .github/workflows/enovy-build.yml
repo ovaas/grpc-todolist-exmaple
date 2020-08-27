@@ -6,6 +6,7 @@ on:
       - master
     paths:
       - 'enovy/*'
+      - '.github/workflows/enovy-build.yml'
 
 jobs:
   build-and-deploy:
