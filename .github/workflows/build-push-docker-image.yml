@@ -23,10 +23,8 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - run: |
-          docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/$IMAGE_NAME:${{ github.sha }}
-          docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/$IMAGE_NAME:${{ github.sha }}
-        env:
-          IMAGE_NAME: grpc-todo-client
+          docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/grpc-todo-client:${{ github.sha }}
+          docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/grpc-todo-client:${{ github.sha }}
         
 
 
