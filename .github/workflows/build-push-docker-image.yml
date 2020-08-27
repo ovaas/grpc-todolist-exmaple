@@ -1,0 +1,32 @@
+name: Build and push docker image
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'client/*'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout GitHub Action'
+        uses: actions/checkout@v2
+        with:
+          path: './client'
+      
+      - name: 'Build and push image'
+        uses: azure/docker-login@v1
+        env:
+          IMAGE_NAME: grpc-todo-client
+        with:
+          login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+      - run: |
+          docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/$IMAGE_NAME:${{ github.sha }}
+          docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/$IMAGE_NAME:${{ github.sha }}
+        
+
+
