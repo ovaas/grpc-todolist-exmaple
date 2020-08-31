@@ -3,13 +3,38 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "dev:debug": "vite --debug",
+    "build": "cross-env NODE_ENV=production vite build"
   },
   "dependencies": {
-    "vue": "^3.0.0-rc.1"
+    "google-protobuf": "^3.13.0",
+    "grpc-web": "^1.2.1",
+    "tailwindcss": "^1.7.6",
+    "vue": "3.0.0-rc.8"
   },
   "devDependencies": {
-    "vite": "^1.0.0-rc.1",
-    "@vue/compiler-sfc": "^3.0.0-rc.1"
+    "@vue/compiler-sfc": "3.0.0-rc.8",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.7.0",
+    "eslint-plugin-vue": "^7.0.0-beta.3",
+    "protobufjs": "^6.10.1",
+    "vite": "^1.0.0-rc.4",
+    "vite-plugin-components": "^0.2.13",
+    "vue-eslint-parser": "^7.1.0"
+  },
+  "eslintConfig": {
+    "parser": "vue-eslint-parser",
+    "extends": [
+      "plugin:vue/vue3-recommended"
+    ],
+    "rules": {
+      "vue/html-self-closing": "off",
+      "vue/max-attributes-per-line": [
+        "warn",
+        {
+          "singleline": 5
+        }
+      ]
+    }
   }
 }
