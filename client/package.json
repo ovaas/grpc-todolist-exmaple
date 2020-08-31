@@ -1,46 +1,15 @@
 {
-  "name": "todo-client",
-  "version": "0.1.0",
-  "private": true,
+  "name": "client",
+  "version": "0.0.0",
   "scripts": {
-    "serve": "vue-cli-service serve --port 3000",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "vite",
+    "build": "vite build"
   },
   "dependencies": {
-    "core-js": "^3.6.5",
-    "google-protobuf": "^3.12.4",
-    "grpc-web": "^1.2.0",
-    "tailwindcss": "^1.6.2",
-    "vue": "^3.0.0-0"
+    "vue": "^3.0.0-rc.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0-0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0-0",
-    "vue-cli-plugin-tailwind": "~1.4.2"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+    "vite": "^1.0.0-rc.1",
+    "@vue/compiler-sfc": "^3.0.0-rc.1"
+  }
 }
